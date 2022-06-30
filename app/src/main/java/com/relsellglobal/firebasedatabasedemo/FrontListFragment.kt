@@ -13,8 +13,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.relsellglobal.firebasedatabasedemo.ui.addcity.AddCityFragment.Companion.ARG_COLUMN_COUNT
+import com.relsellglobal.firebasedatabasedemo.utils.ApiState
 import com.relsellglobal.firebasedatabasedemo.utils.Utils
 import com.relsellglobal.firebasedatabasedemo.viewmodels.ViewModelFactory
 import com.relsellglobal.modelslib.CityContent
@@ -23,6 +26,7 @@ import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 import javax.inject.Inject
 
 
@@ -36,10 +40,10 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
     // TODO: Customize parameters
     private var columnCount = 1
 
-    private var recyclerView:RecyclerView? = null
-    private var myItemRecyclerViewAdapter : MyItemRecyclerViewAdapter? = null
+    private var recyclerView: RecyclerView? = null
+    private var myItemRecyclerViewAdapter: MyItemRecyclerViewAdapter? = null
 
-    private lateinit var binding : FragmentItemListBinding
+    private lateinit var binding: FragmentItemListBinding
 
     @Inject
     lateinit var cityViewModelFactory: ViewModelFactory
@@ -65,7 +69,7 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_item_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_item_list, container, false)
         recyclerView = binding.list
         return binding.root
     }
@@ -73,14 +77,49 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView!!.layoutManager = GridLayoutManager(activity,2,GridLayoutManager.VERTICAL,false);
+        recyclerView!!.layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false);
 
         recyclerView?.addItemDecoration(SpacesItemDecoration(16));
 
-        myItemRecyclerViewAdapter = MyItemRecyclerViewAdapter(mCityContentList,activity)
+        myItemRecyclerViewAdapter = MyItemRecyclerViewAdapter(mCityContentList, activity)
         recyclerView!!.adapter = myItemRecyclerViewAdapter
 
         var model = ViewModelProvider(requireActivity(), cityViewModelFactory).get(CitiesViewModel::class.java)
+
+        lifecycleScope.launchWhenCreated {
+            model.response.collect {
+                when (it) {
+                    is ApiState.Loading -> {
+                        // show progress bar here
+                        //println("error")
+
+                    }
+                    is ApiState.Success -> {
+                        //print(it.data)
+                        // success case
+
+                        var cityContentList = Utils.mappingVolumeInfoObjectToCityContent(it.data)
+                        for (cityContent in cityContentList) {
+                            if (!mCityContentList.contains(cityContent)) {
+                                mCityContentList.add(cityContent)
+                            }
+                        }
+
+                        myItemRecyclerViewAdapter?.notifyDataSetChanged()
+
+
+                    }
+                    is ApiState.Failure -> {
+                        // show snackbar
+                        println("error")
+                    }
+                    is ApiState.Empty -> {
+
+                    }
+                }
+            }
+        }
+
 
 //        model.
 //        getAllCitiesForLocalDB().observe(viewLifecycleOwner,{ listOfCitiesForUser ->
@@ -102,7 +141,6 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
 //        CoroutineScope(Dispatchers.IO).launch {
 //            model.insertDataIntoCitiesForUser()
 //        }
-
 
 
     }

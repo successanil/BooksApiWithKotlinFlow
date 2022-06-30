@@ -10,6 +10,7 @@ class BooksApiRepository @Inject constructor(
     private val booksApiService: BooksApiService
 ){
     fun getBooksListFromApi(queryString:String) = flow {
-        emit(booksApiService.getBookListFromApi(queryString))
+        var data = booksApiService.getBookListFromApi(queryString)
+        emit(data)
     }.flowOn(Dispatchers.IO)
 }

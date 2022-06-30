@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.work.*
 import com.relsellglobal.firebasedatabasedemo.MyApplication
 import com.relsellglobal.firebasedatabasedemo.worker.DefCityWorker
+import com.relsellglobal.kotlinhiltdemo.repositories.network.VolumeInfo
 import com.relsellglobal.localdblib.entities.CitiesForUser
 import com.relsellglobal.modelslib.CityContent
 import com.relsellglobal.modelslib.CityContentNetwork
@@ -31,6 +32,17 @@ class Utils {
             for(obj in list){
                 var cityContent = CityContent()
                 cityContent.cityName = obj.cityName
+                cityContent.apiUrl = ""
+                retList.add(cityContent)
+            }
+            return retList
+        }
+
+        fun mappingVolumeInfoObjectToCityContent(list:List<VolumeInfo>) : List<CityContent> {
+            var retList = ArrayList<CityContent>()
+            for(obj in list){
+                var cityContent = CityContent()
+                cityContent.cityName = obj.volumeInfo.title
                 cityContent.apiUrl = ""
                 retList.add(cityContent)
             }
