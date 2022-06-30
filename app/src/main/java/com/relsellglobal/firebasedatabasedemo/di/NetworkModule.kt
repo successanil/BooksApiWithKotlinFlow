@@ -2,7 +2,7 @@ package com.relsellglobal.firebasedatabasedemo.di
 
 import com.relsellglobal.firebasedatabasedemo.utils.AppConstants
 import com.relsellglobal.interfacesgateway.network.IGApiService
-import com.relsellglobal.networklib.apiservice.WeatherHerokuApiService
+import com.relsellglobal.networklib.apiservice.BooksApiService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -21,14 +21,14 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesWeatherApiService(retrofit: Retrofit) : WeatherHerokuApiService {
-        return retrofit.create(WeatherHerokuApiService::class.java)
+    fun providesBooksApiService(retrofit: Retrofit) : BooksApiService {
+        return retrofit.create(BooksApiService::class.java)
     }
 
     @Provides
     @Singleton
-    fun providesIGApiServiceForWeatherService(weatherHerokuApiService: WeatherHerokuApiService) : IGApiService {
-        return weatherHerokuApiService
+    fun providesIGApiServiceForBookService(booksApiService: BooksApiService) : IGApiService {
+        return booksApiService
     }
 
 }

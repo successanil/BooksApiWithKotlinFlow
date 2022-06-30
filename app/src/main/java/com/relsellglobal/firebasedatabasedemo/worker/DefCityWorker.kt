@@ -14,10 +14,9 @@ class DefCityWorker (private val context: Context, params : WorkerParameters) : 
 
         Log.v("DefCityWorker","Worker Called")
 
-        var weatherDataRepository = MyApplication.getMyApplicationObj().weatherDataRepository
 
         CoroutineScope(Dispatchers.IO).launch {
-            weatherDataRepository.insertDataIntoCitiesForUserFromNetwork()
+//            weatherDataRepository.insertDataIntoCitiesForUserFromNetwork()
         }
 
         return Result.success()

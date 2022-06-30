@@ -4,8 +4,7 @@ import android.app.Application
 import android.content.SharedPreferences
 import com.relsellglobal.firebasedatabasedemo.di.AppComponent
 import com.relsellglobal.firebasedatabasedemo.di.DaggerAppComponent
-import com.relsellglobal.firebasedatabasedemo.di.LocalDBMod
-import com.relsellglobal.repositorymodule.WeatherDataRepository
+import com.relsellglobal.repositorymodule.BooksApiRepository
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -16,7 +15,7 @@ class MyApplication : Application(), HasAndroidInjector {
     lateinit var mInjector: DispatchingAndroidInjector<Any>
 
     @Inject
-    lateinit var weatherDataRepository: WeatherDataRepository
+    lateinit var booksApiRepository: BooksApiRepository
 
     lateinit var appComponent: AppComponent
 
@@ -32,7 +31,6 @@ class MyApplication : Application(), HasAndroidInjector {
 
         appComponent = DaggerAppComponent
             .builder()
-            .localDBMod(LocalDBMod(this))
             .build()
 
         appComponent.inject(this)
