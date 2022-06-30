@@ -121,29 +121,6 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
             }
         }
 
-
-//        model.
-//        getAllCitiesForLocalDB().observe(viewLifecycleOwner,{ listOfCitiesForUser ->
-//            var cityContentList = Utils.mappingCitiesForUserToCityContent(listOfCitiesForUser)
-//
-//            for(cityContent in cityContentList) {
-//                if(!mCityContentList.contains(cityContent)) {
-//                    mCityContentList.add(cityContent)
-//                }
-//            }
-//
-//            myItemRecyclerViewAdapter?.notifyDataSetChanged()
-//
-//
-//        })
-//
-//
-//
-//        CoroutineScope(Dispatchers.IO).launch {
-//            model.insertDataIntoCitiesForUser()
-//        }
-
-
     }
 
     override fun onDetach() {

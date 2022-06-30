@@ -14,7 +14,7 @@
         <activity
             android:name=".MainActivityWithNavBar"
             android:exported="true"
-            android:label="KWD"
+            android:label="BOOKS"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
