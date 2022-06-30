@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.relsellglobal.firebasedatabasedemo.utils.ApiState
 import com.relsellglobal.interfacesgateway.repository.IGRepository
+import com.relsellglobal.kotlinhiltdemo.repositories.network.VolumeInfo
 import com.relsellglobal.repositorymodule.BooksApiRepository
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,7 +31,14 @@ class CitiesViewModel
                     it.items
                 }.collect {
 
-                    response.value  = ApiState.Success(it)
+                    for(i in it){
+                        var list = ArrayList<VolumeInfo>()
+                        list.add(i)
+                        delay(1000L)
+                        response.value  = ApiState.Success(list)
+                    }
+
+
                 }
         }
 

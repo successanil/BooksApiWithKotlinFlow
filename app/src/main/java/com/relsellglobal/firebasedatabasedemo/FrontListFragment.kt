@@ -15,6 +15,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.relsellglobal.firebasedatabasedemo.ui.addcity.AddCityFragment.Companion.ARG_COLUMN_COUNT
 import com.relsellglobal.firebasedatabasedemo.utils.ApiState
@@ -77,7 +78,7 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView!!.layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false);
+        recyclerView!!.layoutManager = LinearLayoutManager(activity);
 
         recyclerView?.addItemDecoration(SpacesItemDecoration(16));
 
