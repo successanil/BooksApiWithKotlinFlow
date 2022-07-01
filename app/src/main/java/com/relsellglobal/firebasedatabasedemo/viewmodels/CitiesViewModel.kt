@@ -27,16 +27,10 @@ class CitiesViewModel
                     response.value = ApiState.Loading
                 }.catch { it ->
                     response.value = ApiState.Failure(it)
-                }.map {
-                    it.items
                 }.collect {
 
-                    for(i in it){
-                        var list = ArrayList<VolumeInfo>()
-                        list.add(i)
-                        delay(1000L)
-                        response.value  = ApiState.Success(list)
-                    }
+                        response.value  = ApiState.Success(it)
+
 
 
                 }
