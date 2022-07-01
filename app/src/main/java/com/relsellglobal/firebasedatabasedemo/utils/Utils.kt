@@ -43,7 +43,7 @@ class Utils {
             for(obj in list){
                 var cityContent = CityContent()
                 cityContent.cityName = obj.volumeInfo.title
-                cityContent.apiUrl = ""
+                cityContent.apiUrl = obj.volumeInfo.imageLinks.smallThumbnail
                 retList.add(cityContent)
             }
             return retList

@@ -9,10 +9,12 @@ import com.relsellglobal.firebasedatabasedemo.databinding.FragmentItemBinding
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.relsellglobal.modelslib.CityContent
 import com.relsellglobal.modelslib.CityContentNetwork
 
@@ -48,6 +50,12 @@ class MyItemRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
         holder.mContentView.text = item.cityName
+        Glide.with(MyApplication.getMyApplicationObj())
+            .load(item.apiUrl)
+            .centerCrop()
+            .error(R.mipmap.sunny)
+        .into(holder.bookImage)
+
         holder.mView.setOnClickListener({
             //lets do some thing
             try {
@@ -72,6 +80,7 @@ class MyItemRecyclerViewAdapter(
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
 
         val mContentView: TextView = mView.findViewById(R.id.content)
+        val bookImage : ImageView = mView.findViewById(R.id.bookIM)
 
         override fun toString(): String {
             return super.toString() + " '" + mContentView.text + "'"

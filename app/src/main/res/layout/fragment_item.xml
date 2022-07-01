@@ -40,74 +40,74 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_weight="1.2"
-                android:gravity="center"
+                android:gravity="right"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <ImageView android:layout_width="32dp"
+                <ImageView android:layout_width="70dp"
                     android:src="@mipmap/sunny"
-                    android:layout_height="32dp" android:id="@+id/weatherIM" />
+                    android:layout_height="90dp" android:id="@+id/bookIM" />
 
             </LinearLayout>
 
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_weight="1"
-                android:gravity="bottom"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+<!--            <LinearLayout-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="bottom"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent" >-->
 
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--&lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="match_parent">&ndash;&gt;-->
 
-                <TextView
-                    android:id="@+id/minTemp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:fontFamily="@font/raleway_variablefont_wght"
-                    android:textColor="#000"
-                    android:text="MIN: "
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/maxTemp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:fontFamily="@font/raleway_variablefont_wght"
-                    android:textColor="#000"
-                    android:text="MAX: "
-                    android:textSize="12sp"
-                    android:textStyle="normal" />
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/minTemp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_marginStart="2dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:fontFamily="@font/raleway_variablefont_wght"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="#000"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="MIN: "&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="12sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="bold" />&ndash;&gt;-->
+<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/maxTemp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_marginStart="2dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:fontFamily="@font/raleway_variablefont_wght"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textColor="#000"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="MAX: "&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textSize="12sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:textStyle="normal" />&ndash;&gt;-->
 
-                </LinearLayout>
+<!--&lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
 
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:layout_height="match_parent">
+<!--&lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_weight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="match_parent">&ndash;&gt;-->
 
-                    <TextView
-                        android:id="@+id/averageTemp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:fontFamily="@font/lobster_regular"
-                        android:textColor="#000"
-                        android:text="26 c"
-                        android:textSize="24sp"
-                        android:textStyle="normal" />
+<!--&lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/averageTemp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginStart="2dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:fontFamily="@font/lobster_regular"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textColor="#000"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="26 c"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textSize="24sp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:textStyle="normal" />&ndash;&gt;-->
 
-                </LinearLayout>
+<!--&lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
 
 
