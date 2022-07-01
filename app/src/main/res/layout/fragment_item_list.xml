@@ -4,12 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/pbLayout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
             android:id="@+id/list"
             android:name="in.relsellglobal.firebasedatabasedemo.FrontListFragment"
             android:layout_width="match_parent"

@@ -10,6 +10,7 @@ import com.relsellglobal.localdblib.database.CityDatabase
 import com.relsellglobal.localdblib.entities.CityContentDB
 import com.relsellglobal.progressbarlib.ChildFragment
 import com.relsellglobal.progressbarlib.MainActivityForProgressBar
+import com.relsellglobal.progressbarlib.ProgressBarFragment
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -35,6 +36,13 @@ class UiPhoneActivity : AppCompatActivity(), HasAndroidInjector {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
+        setContentView(R.layout.activity_ui_phone)
+
+
+
+        supportFragmentManager
+            .beginTransaction().replace(R.id.rtlLayout,ProgressBarFragment()).commit()
+
 
 //        setContentView(R.layout.activity_ui_phone)
 //        childDepedency.printMe()
@@ -48,7 +56,7 @@ class UiPhoneActivity : AppCompatActivity(), HasAndroidInjector {
 //        supportFragmentManager.beginTransaction().replace(R.id.rtlLayout,ChildFragment()).commit()
 
 
-        startActivity(Intent(this@UiPhoneActivity, MainActivityForProgressBar::class.java))
+       // startActivity(Intent(this@UiPhoneActivity, MainActivityForProgressBar::class.java))
 
     }
 

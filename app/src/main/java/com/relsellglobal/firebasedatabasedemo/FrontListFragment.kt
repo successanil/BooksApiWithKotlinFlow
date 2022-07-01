@@ -22,6 +22,7 @@ import com.relsellglobal.firebasedatabasedemo.utils.ApiState
 import com.relsellglobal.firebasedatabasedemo.utils.Utils
 import com.relsellglobal.firebasedatabasedemo.viewmodels.ViewModelFactory
 import com.relsellglobal.modelslib.CityContent
+import com.relsellglobal.progressbarlib.databinding.ProgressLayoutCircularBinding
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.CoroutineScope
@@ -51,6 +52,8 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
 
     var mCityContentList = ArrayList<CityContent>()
 
+    lateinit var progressBarBinding : ProgressLayoutCircularBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,12 +74,17 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_item_list, container, false)
+        progressBarBinding = DataBindingUtil.inflate(inflater,R.layout.progress_layout_horizontal,container,false)
+
+       // binding.pbLayout = progressBarBinding.progressBar
+
         recyclerView = binding.list
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         recyclerView!!.layoutManager = LinearLayoutManager(activity);
 
@@ -93,11 +101,13 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
                     is ApiState.Loading -> {
                         // show progress bar here
                         //println("error")
+                        binding.pbLayout.visibility = View.VISIBLE
 
                     }
                     is ApiState.Success -> {
                         //print(it.data)
                         // success case
+                        binding.pbLayout.visibility = View.GONE
 
                         var cityContentList = Utils.mappingVolumeInfoObjectToCityContent(it.data)
                         for (cityContent in cityContentList) {
@@ -112,6 +122,7 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
                     }
                     is ApiState.Failure -> {
                         // show snackbar
+                        binding.pbLayout.visibility = View.GONE
                         println("error")
                     }
                     is ApiState.Empty -> {
