@@ -6,18 +6,22 @@ import android.os.Looper
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.relsellglobal.progressbarlib.databinding.ProgressLayoutCircularBinding
 
 class MainActivityForProgressBar : AppCompatActivity() {
+    private lateinit var binding : ProgressLayoutCircularBinding
     private var progressBar: ProgressBar? = null
     private var progressText: TextView? = null
     var i = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.progress_layout_circular)
+
+        binding = DataBindingUtil.setContentView(this@MainActivityForProgressBar,R.layout.progress_layout_circular)
 
         // set the id for the progressbar and progress text
-        progressBar = findViewById(R.id.progress_bar)
-        progressText = findViewById(R.id.progress_text)
+        progressBar = binding.progressBar
+        progressText = binding.progressText
         val handler = Handler(Looper.myLooper()!!)
         handler.postDelayed(object : Runnable {
             override fun run() {
