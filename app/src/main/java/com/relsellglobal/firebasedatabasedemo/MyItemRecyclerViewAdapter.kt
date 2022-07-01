@@ -27,11 +27,22 @@ class MyItemRecyclerViewAdapter(
     ) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
 
     private lateinit var binding : FragmentItemBinding
+    private var VIEW_TYPE_HEADER = 0
+    private var VIEW_TYPE_ITEM = 1
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.fragment_item, parent, false)
-        return ViewHolder(binding.root)
+        if(viewType == VIEW_TYPE_HEADER) {
+            // we can have different views here
+            return ViewHolder(binding.root)
+        } else if(viewType == VIEW_TYPE_ITEM) {
+            // we can have different view here
+            return ViewHolder(binding.root)
+        } else {
+            // we can have different view here
+            return ViewHolder(binding.root)
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -50,6 +61,10 @@ class MyItemRecyclerViewAdapter(
 
         })
 
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        if(position == 1) return VIEW_TYPE_HEADER else return VIEW_TYPE_ITEM
     }
 
     override fun getItemCount(): Int = mValues.size
