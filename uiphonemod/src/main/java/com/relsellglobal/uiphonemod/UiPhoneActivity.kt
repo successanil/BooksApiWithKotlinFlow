@@ -9,6 +9,7 @@ import android.util.Log
 import com.relsellglobal.localdblib.database.CityDatabase
 import com.relsellglobal.localdblib.entities.CityContentDB
 import com.relsellglobal.progressbarlib.ChildFragment
+import com.relsellglobal.progressbarlib.MainActivityForProgressBar
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -35,16 +36,19 @@ class UiPhoneActivity : AppCompatActivity(), HasAndroidInjector {
         super.onCreate(savedInstanceState)
 
 
-        setContentView(R.layout.activity_ui_phone)
-        childDepedency.printMe()
-
-        triggerDBDemoCall()
+//        setContentView(R.layout.activity_ui_phone)
+//        childDepedency.printMe()
+//
+//        triggerDBDemoCall()
 
 
 
 
 //        startActivity(Intent(this@UiPhoneActivity,com.relsellglobal.progressbarlib.MainActivity::class.java))
-        supportFragmentManager.beginTransaction().replace(R.id.rtlLayout,ChildFragment()).commit()
+//        supportFragmentManager.beginTransaction().replace(R.id.rtlLayout,ChildFragment()).commit()
+
+
+        startActivity(Intent(this@UiPhoneActivity, MainActivityForProgressBar::class.java))
 
     }
 

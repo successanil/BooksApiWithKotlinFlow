@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.relsellglobal.progressbarlib.MainActivity" />
+        <activity android:name="com.relsellglobal.progressbarlib.MainActivityForProgressBar" />
         <activity android:name="com.relsellglobal.modelslib.DummyActivity" />
     </application>
 
