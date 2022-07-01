@@ -1,5 +1,5 @@
 include ':app'
-include ':progressbarlib'
+include ':progresslib'
 include ':uiphonemod'
 include ':flowdemoapplication'
 include ':networklib'

@@ -1,0 +1,3 @@
+[submodule "progresslib"]
+	path = progresslib
+	url = git@github.com:successanil/progresslib.git

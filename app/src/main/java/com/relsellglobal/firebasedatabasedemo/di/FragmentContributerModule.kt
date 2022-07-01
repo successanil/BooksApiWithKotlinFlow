@@ -5,6 +5,7 @@ import com.relsellglobal.firebasedatabasedemo.FrontListFragment
 import com.relsellglobal.firebasedatabasedemo.ui.addcity.AddCityFragment
 import com.relsellglobal.firebasedatabasedemo.ui.home.HomeFragment
 import com.relsellglobal.progressbarlib.ChildFragment
+import com.relsellglobal.progressbarlib.ProgressBarFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -22,4 +23,7 @@ abstract class FragmentContributerModule {
 
     @ContributesAndroidInjector
     abstract fun contributesDetailFragment() : DetailFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributesProgressBarFragment() : ProgressBarFragment
 }
