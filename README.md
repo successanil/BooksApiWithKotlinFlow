@@ -9,5 +9,12 @@ A delay is added in showing items in recyclerview.
 
 
 
+Output : 
+
+<img src="app_screen.png" width="360" height="640">
+
+
+
+
 
 
