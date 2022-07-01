@@ -22,6 +22,7 @@ import com.relsellglobal.firebasedatabasedemo.utils.ApiState
 import com.relsellglobal.firebasedatabasedemo.utils.Utils
 import com.relsellglobal.firebasedatabasedemo.viewmodels.ViewModelFactory
 import com.relsellglobal.modelslib.CityContent
+import com.relsellglobal.progressbarlib.ProgressBarFragment
 import com.relsellglobal.progressbarlib.databinding.ProgressLayoutCircularBinding
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
@@ -52,7 +53,6 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
 
     var mCityContentList = ArrayList<CityContent>()
 
-    lateinit var progressBarBinding : ProgressLayoutCircularBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,9 +74,7 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_item_list, container, false)
-        progressBarBinding = DataBindingUtil.inflate(inflater,R.layout.progress_layout_horizontal,container,false)
 
-       // binding.pbLayout = progressBarBinding.progressBar
 
         recyclerView = binding.list
         return binding.root
@@ -85,13 +83,19 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         recyclerView!!.layoutManager = LinearLayoutManager(activity);
 
         recyclerView?.addItemDecoration(SpacesItemDecoration(16));
 
         myItemRecyclerViewAdapter = MyItemRecyclerViewAdapter(mCityContentList, activity)
         recyclerView!!.adapter = myItemRecyclerViewAdapter
+
+        parentFragmentManager
+            .beginTransaction()
+            .replace(binding.pbLayout.id, ProgressBarFragment()).commit()
+
+        binding.pbLayout.visibility = View.VISIBLE
+        recyclerView?.visibility = View.GONE
 
         var model = ViewModelProvider(requireActivity(), cityViewModelFactory).get(CitiesViewModel::class.java)
 
@@ -102,12 +106,14 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
                         // show progress bar here
                         //println("error")
                         binding.pbLayout.visibility = View.VISIBLE
+                        recyclerView?.visibility = View.GONE
 
                     }
                     is ApiState.Success -> {
                         //print(it.data)
                         // success case
                         binding.pbLayout.visibility = View.GONE
+                        recyclerView?.visibility = View.VISIBLE
 
                         var cityContentList = Utils.mappingVolumeInfoObjectToCityContent(it.data)
                         for (cityContent in cityContentList) {
@@ -123,6 +129,7 @@ class FrontListFragment @Inject constructor() : DaggerFragment() {
                     is ApiState.Failure -> {
                         // show snackbar
                         binding.pbLayout.visibility = View.GONE
+                        recyclerView?.visibility = View.GONE
                         println("error")
                     }
                     is ApiState.Empty -> {
