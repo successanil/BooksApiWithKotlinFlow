@@ -1,6 +1,7 @@
 package com.relsellglobal.firebasedatabasedemo
 
 import android.app.Application
+import android.content.Context
 import android.content.SharedPreferences
 import com.relsellglobal.firebasedatabasedemo.di.AppComponent
 import com.relsellglobal.firebasedatabasedemo.di.DaggerAppComponent
@@ -47,7 +48,7 @@ class MyApplication : Application(), HasAndroidInjector {
     }
 
     fun initializeSp()  {
-        sp = myApplication?.getSharedPreferences("MySharedPref", MODE_APPEND)
+        sp = myApplication?.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE)
     }
 
     companion object {
